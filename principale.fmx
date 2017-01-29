@@ -9,219 +9,8 @@ object fPrincipale: TfPrincipale
   FormFactor.Height = 480
   FormFactor.Devices = [Desktop]
   OnCreate = FormCreate
+  OnClose = FormClose
   DesignerMasterStyle = 0
-  object affichage3D: TViewport3D
-    Align = Client
-    Color = claBlack
-    RotationCenter.X = 0.000000000000000000
-    RotationCenter.Y = 0.000000000000000000
-    Size.Width = 345.000000000000000000
-    Size.Height = 540.000000000000000000
-    Size.PlatformDefault = False
-    OnClick = affichage3DClick
-    object dmyPrincipal: TDummy
-      Position.Z = 6.000000000000000000
-      Scale.X = 0.500000000000000000
-      Scale.Y = 0.500000000000000000
-      Scale.Z = 0.500000000000000000
-      RotationAngle.X = 290.000000000000000000
-      Width = 1.000000000000000000
-      Height = 1.000000000000000000
-      Depth = 1.000000000000000000
-      Quanternion = '(-0.573576390743256,0,0,0.819151997566223)'
-      object raquetteJoueur: TRoundCube
-        Cursor = crHandPoint
-        Position.Y = 19.000000000000000000
-        Position.Z = 0.500000000000000000
-        Width = 3.500000000000000000
-        Height = 1.500000000000000000
-        Depth = 1.000000000000000000
-        OnMouseDown = raquetteJoueurMouseDown
-        OnMouseMove = raquetteJoueurMouseMove
-        OnMouseUp = raquetteJoueurMouseUp
-        OnRender = raquetteJoueurRender
-        MaterialSource = LightAquamarine
-      end
-      object dmyPalet: TDummy
-        Width = 1.000000000000000000
-        Height = 1.000000000000000000
-        Depth = 1.000000000000000000
-        object apparition: TFloatAnimation
-          Duration = 0.500000000000000000
-          OnFinish = apparitionFinish
-          PropertyName = 'Opacity'
-          StartValue = 0.000000000000000000
-          StopValue = 1.000000000000000000
-        end
-        object disparition: TFloatAnimation
-          Duration = 0.500000000000000000
-          OnFinish = disparitionFinish
-          PropertyName = 'Opacity'
-          StartValue = 1.000000000000000000
-          StopValue = 0.000000000000000000
-        end
-        object palet: TCylinder
-          Scale.X = 0.699999988079071000
-          Scale.Y = 0.699999988079071000
-          Scale.Z = 0.699999988079071000
-          RotationAngle.X = 90.000000000000000000
-          Width = 2.000000000000000000
-          Height = 0.500000000000000000
-          Depth = 2.000000000000000000
-          SubdivisionsAxes = 32
-          MaterialSource = LightPalet
-          Quanternion = '(0.707106351852417,0,0,0.707107067108154)'
-        end
-      end
-      object cubeBande: TStrokeCube
-        Color = claBlack
-        Locked = True
-        Width = 16.000000000000000000
-        Height = 42.000000000000000000
-        Depth = 1.000000000000000000
-        HitTest = False
-      end
-      object bordDroit: TCube
-        Position.X = 8.500000000000000000
-        Locked = True
-        Width = 1.000000000000000000
-        Height = 40.000000000000000000
-        Depth = 4.000000000000000000
-        OnClick = bordDroitClick
-        MaterialSource = textureTable
-      end
-      object bordGauche: TCube
-        Position.X = -8.500000000000000000
-        Locked = True
-        Width = 1.000000000000000000
-        Height = 40.000000000000000000
-        Depth = 4.000000000000000000
-        OnClick = bordDroitClick
-        MaterialSource = textureTable
-      end
-      object base: TCube
-        Position.Z = 2.000000000000000000
-        Locked = True
-        Width = 18.000000000000000000
-        Height = 40.000000000000000000
-        Depth = 1.000000000000000000
-        OnClick = bordDroitClick
-        MaterialSource = textureTable
-      end
-      object txtGagne: TText3D
-        Position.Y = 8.000000000000000000
-        Position.Z = -2.000000000000000000
-        Width = 10.000000000000000000
-        Height = 6.000000000000000000
-        Depth = 0.300000011920929000
-        Text = 'Gagn'#233
-        WordWrap = False
-        Flatness = 1.000000000000000000
-        Sides = [Front, Back, Shaft]
-        MaterialBackSource = LightPalet
-        MaterialShaftSource = LightPalet
-        MaterialSource = LightPalet
-      end
-      object LimiteZone: TPlane
-        Position.Y = 10.500000000000000000
-        Position.Z = 1.399999976158142000
-        RotationAngle.Z = 90.000000000000000000
-        Width = 0.300000011920929000
-        Height = 16.000000000000000000
-        Depth = 0.001000000047497451
-        MaterialSource = LightLimite
-        Quanternion = '(0,0,0.70710676908493,0.70710676908493)'
-      end
-    end
-    object CPUAI: TFloatAnimation
-      Duration = 0.200000002980232200
-      Interpolation = Sinusoidal
-      StartValue = 0.000000000000000000
-      StopValue = 0.000000000000000000
-    end
-    object pnlAction: TPanel
-      Align = Bottom
-      Position.Y = 500.000000000000000000
-      Size.Width = 345.000000000000000000
-      Size.Height = 40.000000000000000000
-      Size.PlatformDefault = False
-      TabOrder = 0
-      object btnJouer: TButton
-        Action = actJouer
-        Enabled = True
-        ImageIndex = -1
-        Position.X = 5.000000000000000000
-        Position.Y = 5.000000000000000000
-        Size.Width = 92.000000000000000000
-        Size.Height = 30.000000000000000000
-        Size.PlatformDefault = False
-        TabOrder = 0
-        Visible = True
-      end
-      object btnAide: TButton
-        Action = actAide
-        Enabled = True
-        ImageIndex = -1
-        Position.X = 244.000000000000000000
-        Position.Y = 5.000000000000000000
-        Size.Width = 93.000000000000000000
-        Size.Height = 30.000000000000000000
-        Size.PlatformDefault = False
-        TabOrder = 1
-        Visible = True
-      end
-      object lblScore: TLabel
-        Position.X = 104.000000000000000000
-        Position.Y = 1.000000000000000000
-        Size.Width = 128.000000000000000000
-        Size.Height = 17.000000000000000000
-        Size.PlatformDefault = False
-        TextSettings.HorzAlign = Center
-      end
-      object tbDifficulte: TTrackBar
-        CanParentFocus = True
-        Max = 4.000000000000000000
-        Orientation = Horizontal
-        Position.X = 100.000000000000000000
-        Position.Y = 16.000000000000000000
-        Size.Width = 137.000000000000000000
-        Size.Height = 20.000000000000000000
-        Size.PlatformDefault = False
-        TabOrder = 3
-        Value = 2.000000000000000000
-        OnTracking = tbDifficulteTracking
-      end
-    end
-    object lumiere: TLight
-      Color = claWhite
-      LightType = Directional
-      SpotCutOff = 60.000000000000000000
-      SpotExponent = 0.100000001490116100
-      Position.X = 1.734870314598084000
-      Position.Y = -5.661540985107422000
-      Position.Z = -4.999990463256836000
-      RotationAngle.X = 0.515892028808593800
-      RotationAngle.Y = 347.477142333984400000
-      RotationAngle.Z = 356.827880859375000000
-      Width = 1.000000000000000000
-      Height = 1.000000000000000000
-      Depth = 1.000000000000000000
-      Quanternion = 
-        '(0.382493883371353,0.0271270200610161,0.00812540110200644,-0.923' +
-        '52420091629)'
-    end
-    object aniBouclePrincipale: TFloatAnimation
-      Enabled = True
-      Delay = 0.100000001490116100
-      Duration = 0.100000001490116100
-      Loop = True
-      OnProcess = aniBouclePrincipaleProcess
-      OnFinish = aniBouclePrincipaleFinish
-      PropertyName = 'RotationCenter.Y'
-      StartValue = 0.000000000000000000
-      StopValue = 1.000000000000000000
-    end
-  end
   object LightPalet: TLightMaterialSource
     Diffuse = claWhite
     Ambient = xFF202020
@@ -229,7 +18,7 @@ object fPrincipale: TfPrincipale
     Specular = xFF606060
     Shininess = 30
     Left = 8
-    Top = 8
+    Top = 496
   end
   object textureTable: TLightMaterialSource
     Diffuse = claCoral
@@ -22257,7 +22046,7 @@ object fPrincipale: TfPrincipale
       8E8EFE5F1F4A8E34F0BC98B50000000049454E44AE426082}
     Shininess = 40
     Left = 40
-    Top = 8
+    Top = 496
   end
   object LightAquamarine: TLightMaterialSource
     Diffuse = claAquamarine
@@ -22266,7 +22055,7 @@ object fPrincipale: TfPrincipale
     Specular = xFF606060
     Shininess = 30
     Left = 72
-    Top = 8
+    Top = 496
   end
   object StyleBook: TStyleBook
     Styles = <
@@ -25383,35 +25172,7 @@ object fPrincipale: TfPrincipale
           74746F6D627574746F6E085461624F72646572020000000000}
       end>
     Left = 232
-    Top = 8
-  end
-  object memAide: TMemo
-    Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
-    DataDetectorTypes = []
-    Lines.Strings = (
-      'R'#232'gles du jeu :'
-      ''
-      
-        'Vous jouez contre l'#39'ordinateur. Le premier qui marque 7 points r' +
-        'emporte la partie.'
-      ''
-      
-        'Pour marquer des points il suffit de renvoyer la balle '#224' l'#39'aide ' +
-        'de la raquette et de marquer des buts '#224' l'#39'adversaire.'
-      ''
-      'Bon jeu !'
-      'Gr'#233'gory Bersegeay.')
-    ReadOnly = True
-    TextSettings.WordWrap = True
-    Align = Client
-    Size.Width = 313.000000000000000000
-    Size.Height = 458.000000000000000000
-    Size.PlatformDefault = False
-    TabOrder = 7
-    Visible = False
-    OnClick = memAideClick
-    Viewport.Width = 309.000000000000000000
-    Viewport.Height = 454.000000000000000000
+    Top = 496
   end
   object LightLimite: TLightMaterialSource
     Diffuse = claChocolate
@@ -25420,18 +25181,563 @@ object fPrincipale: TfPrincipale
     Specular = xFF606060
     Shininess = 30
     Left = 104
-    Top = 8
+    Top = 496
+  end
+  object Rectangle2: TRectangle
+    Align = Client
+    Fill.Kind = Gradient
+    Fill.Gradient.Points = <
+      item
+        Color = xFF040404
+        Offset = 0.000000000000000000
+      end
+      item
+        Color = xFF0081B3
+        Offset = 1.000000000000000000
+      end>
+    Fill.Gradient.StartPosition.X = 0.500000000000000000
+    Fill.Gradient.StartPosition.Y = 1.000000000000000000
+    Fill.Gradient.StopPosition.X = 0.499999970197677600
+    Fill.Gradient.StopPosition.Y = 0.000000000000000000
+    Size.Width = 345.000000000000000000
+    Size.Height = 540.000000000000000000
+    Size.PlatformDefault = False
+    object affichage3D: TViewport3D
+      Align = Client
+      Color = claNull
+      RotationCenter.X = 0.000000000000000000
+      RotationCenter.Y = 0.000000000000000000
+      Size.Width = 345.000000000000000000
+      Size.Height = 540.000000000000000000
+      Size.PlatformDefault = False
+      OnClick = affichage3DClick
+      object dmyPrincipal: TDummy
+        Position.Z = 6.000000000000000000
+        Scale.X = 0.500000000000000000
+        Scale.Y = 0.500000000000000000
+        Scale.Z = 0.500000000000000000
+        RotationAngle.X = 290.000000000000000000
+        Width = 1.000000000000000000
+        Height = 1.000000000000000000
+        Depth = 1.000000000000000000
+        Quanternion = '(-0.573576390743256,0,0,0.819151997566223)'
+        object raquetteJoueur: TRoundCube
+          Cursor = crHandPoint
+          Position.Y = 19.000000000000000000
+          Position.Z = 0.500000000000000000
+          Width = 3.500000000000000000
+          Height = 1.500000000000000000
+          Depth = 1.000000000000000000
+          OnMouseDown = raquetteJoueurMouseDown
+          OnMouseMove = raquetteJoueurMouseMove
+          OnMouseUp = raquetteJoueurMouseUp
+          OnRender = raquetteJoueurRender
+          MaterialSource = LightAquamarine
+        end
+        object dmyPalet: TDummy
+          Width = 1.000000000000000000
+          Height = 1.000000000000000000
+          Depth = 1.000000000000000000
+          object apparition: TFloatAnimation
+            Duration = 0.500000000000000000
+            OnFinish = apparitionFinish
+            PropertyName = 'Opacity'
+            StartValue = 0.000000000000000000
+            StopValue = 1.000000000000000000
+          end
+          object disparition: TFloatAnimation
+            Duration = 0.500000000000000000
+            OnFinish = disparitionFinish
+            PropertyName = 'Opacity'
+            StartValue = 1.000000000000000000
+            StopValue = 0.000000000000000000
+          end
+          object palet: TCylinder
+            Scale.X = 0.699999988079071100
+            Scale.Y = 0.699999988079071100
+            Scale.Z = 0.699999988079071100
+            RotationAngle.X = 90.000000000000000000
+            Width = 2.000000000000000000
+            Height = 0.500000000000000000
+            Depth = 2.000000000000000000
+            SubdivisionsAxes = 32
+            MaterialSource = LightPalet
+            Quanternion = '(0.707106351852417,0,0,0.707107067108154)'
+          end
+        end
+        object cubeBande: TStrokeCube
+          Color = claBlack
+          Locked = True
+          Width = 16.000000000000000000
+          Height = 42.000000000000000000
+          Depth = 1.000000000000000000
+          HitTest = False
+        end
+        object bordDroit: TCube
+          Position.X = 8.500000000000000000
+          Locked = True
+          Width = 1.000000000000000000
+          Height = 40.000000000000000000
+          Depth = 4.000000000000000000
+          OnClick = bordDroitClick
+          MaterialSource = textureTable
+        end
+        object bordGauche: TCube
+          Position.X = -8.500000000000000000
+          Locked = True
+          Width = 1.000000000000000000
+          Height = 40.000000000000000000
+          Depth = 4.000000000000000000
+          OnClick = bordDroitClick
+          MaterialSource = textureTable
+        end
+        object base: TCube
+          Position.Z = 2.000000000000000000
+          Locked = True
+          Width = 18.000000000000000000
+          Height = 40.000000000000000000
+          Depth = 1.000000000000000000
+          OnClick = bordDroitClick
+          MaterialSource = textureTable
+        end
+        object txtGagne: TText3D
+          Position.Y = 8.000000000000000000
+          Position.Z = -2.000000000000000000
+          Width = 10.000000000000000000
+          Height = 6.000000000000000000
+          Depth = 0.300000011920929000
+          Text = 'Gagn'#233
+          WordWrap = False
+          Flatness = 1.000000000000000000
+          Sides = [Front, Back, Shaft]
+          MaterialBackSource = LightPalet
+          MaterialShaftSource = LightPalet
+          MaterialSource = LightPalet
+        end
+        object LimiteZone: TPlane
+          Position.Y = 10.500000000000000000
+          Position.Z = 1.399999976158142000
+          RotationAngle.Z = 90.000000000000000000
+          Width = 0.300000011920929000
+          Height = 16.000000000000000000
+          Depth = 0.001000000047497451
+          MaterialSource = LightLimite
+          Quanternion = '(0,0,0.70710676908493,0.70710676908493)'
+        end
+      end
+      object CPUAI: TFloatAnimation
+        Duration = 0.200000002980232200
+        Interpolation = Sinusoidal
+        StartValue = 0.000000000000000000
+        StopValue = 0.000000000000000000
+      end
+      object lumiere: TLight
+        Color = claWhite
+        LightType = Directional
+        SpotCutOff = 60.000000000000000000
+        SpotExponent = 0.100000001490116100
+        Position.X = 1.734870314598084000
+        Position.Y = -5.661540985107422000
+        Position.Z = -4.999990463256836000
+        RotationAngle.X = 0.515892028808593700
+        RotationAngle.Y = 347.477142333984400000
+        RotationAngle.Z = 356.827880859375000000
+        Width = 1.000000000000000000
+        Height = 1.000000000000000000
+        Depth = 1.000000000000000000
+        Quanternion = 
+          '(0.382493883371353,0.0271270200610161,0.00812540110200644,-0.923' +
+          '52420091629)'
+      end
+      object aniBouclePrincipale: TFloatAnimation
+        Enabled = True
+        Delay = 0.100000001490116100
+        Duration = 0.100000001490116100
+        Loop = True
+        OnProcess = aniBouclePrincipaleProcess
+        OnFinish = aniBouclePrincipaleFinish
+        PropertyName = 'RotationCenter.Y'
+        StartValue = 0.000000000000000000
+        StopValue = 1.000000000000000000
+      end
+      object layHaut: TLayout
+        Align = Top
+        Margins.Top = 5.000000000000000000
+        Position.Y = 5.000000000000000000
+        Size.Width = 345.000000000000000000
+        Size.Height = 40.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 0
+        object RoundRect1: TRoundRect
+          Align = Client
+          Fill.Kind = Gradient
+          Fill.Gradient.Points = <
+            item
+              Color = claBlack
+              Offset = 0.000000000000000000
+            end
+            item
+              Color = xFFE88754
+              Offset = 1.000000000000000000
+            end>
+          Fill.Gradient.StartPosition.X = 0.500000000000000000
+          Fill.Gradient.StartPosition.Y = 1.000000000000000000
+          Fill.Gradient.StopPosition.X = 0.499999970197677600
+          Fill.Gradient.StopPosition.Y = 0.000000000000000000
+          Margins.Left = 10.000000000000000000
+          Margins.Right = 10.000000000000000000
+          Size.Width = 325.000000000000000000
+          Size.Height = 40.000000000000000000
+          Size.PlatformDefault = False
+          object lblScoreJoueur: TLabel
+            Align = Left
+            StyledSettings = [Family]
+            Margins.Right = 5.000000000000000000
+            Position.X = 60.000000000000000000
+            Size.Width = 101.000000000000000000
+            Size.Height = 40.000000000000000000
+            Size.PlatformDefault = False
+            TextSettings.Font.Size = 22.000000000000000000
+            TextSettings.Font.StyleExt = {00070000000000000004000000}
+            TextSettings.FontColor = claAquamarine
+            TextSettings.HorzAlign = Trailing
+          end
+          object Image1: TImage
+            MultiResBitmap.Height = 32
+            MultiResBitmap.Width = 32
+            MultiResBitmap.TransparentColor = 16777215
+            MultiResBitmap = <
+              item
+                Width = 32
+                Height = 32
+                PNG = {
+                  89504E470D0A1A0A0000000D4948445200000020000000200806000000737A7A
+                  F4000000017352474200AECE1CE90000000467414D410000B18F0BFC61050000
+                  00C6494441545847D5D35B0E82301085E1E24ABAFF557527EA3439C98400CEE5
+                  4CC1FF01030F9CCF46DBDD6D721963BCE7DDB7DEFB7CB6AA4D8FEB56414E01A8
+                  1AF213A0ABC0B8008809090110039202A00CE41080177A7111C8250055424C00
+                  1D1BE3062016240C4059481A80A290D7BC23242F8C9C1CED04F6594F847602FB
+                  AC5F827E029EDF82ECD04E4086BDE3F2F9BF7FC3EC30720358C3C80C600FA34B
+                  40D5A8EE10E02D328C5280CC300A0118C3C805600E2313A062189D022A477573
+                  4423560D3FA4D63EF303AC229A3B83AC0000000049454E44AE426082}
+                FileName = 
+                  'C:\Users\Gregory\Documents\Developpement\Programmes\FMX\Pong\pla' +
+                  'y.bmp'
+              end>
+            Align = Left
+            Cursor = crHandPoint
+            Margins.Left = 10.000000000000000000
+            Margins.Top = 8.000000000000000000
+            Margins.Bottom = 8.000000000000000000
+            Position.X = 10.000000000000000000
+            Position.Y = 8.000000000000000000
+            Size.Width = 50.000000000000000000
+            Size.Height = 24.000000000000000000
+            Size.PlatformDefault = False
+            OnClick = actJouerExecute
+          end
+          object Image2: TImage
+            MultiResBitmap.Height = 32
+            MultiResBitmap.Width = 32
+            MultiResBitmap.TransparentColor = 16777215
+            MultiResBitmap = <
+              item
+                Width = 32
+                Height = 32
+                PNG = {
+                  89504E470D0A1A0A0000000D4948445200000020000000200806000000737A7A
+                  F4000000017352474200AECE1CE90000000467414D410000B18F0BFC61050000
+                  00E9494441545847CD96590EC3200C44494FC2FD4FC54D5A19618982F742E1FD
+                  84A0CC7830D99E14A494F26EC34ACE39E415128DC5914888573B1E830DC0AD92
+                  9B07221AB2659400DB2B9901D275D4164D135A815F19437C9DEC2E8EF4218E77
+                  E0F853307500D8D505D34D0858028C66110DE00E4099F478B5AE5568C5118F4F
+                  1D58DA07AC0A8080DFB3BA3862F5BDF763F42FEE78111DBD09DBB8A2095705E8
+                  7D4843C9400BE1D5BA0320A35944038403443005D8551C1943DCF53FB07BF548
+                  DF85E35B600AD08BB480D2B56371609A40404C093C0110CE0B6003487021B822
+                  1277FE155BB0ECAF4E4A1FFC40AA44D9B2C47B0000000049454E44AE426082}
+                FileName = 
+                  'C:\Users\Gregory\Documents\Developpement\Programmes\FMX\Pong\con' +
+                  'fig.bmp'
+              end>
+            Align = Right
+            Cursor = crHandPoint
+            Margins.Top = 8.000000000000000000
+            Margins.Right = 10.000000000000000000
+            Margins.Bottom = 8.000000000000000000
+            Position.X = 265.000000000000000000
+            Position.Y = 8.000000000000000000
+            Size.Width = 50.000000000000000000
+            Size.Height = 24.000000000000000000
+            Size.PlatformDefault = False
+            OnClick = actOptionsExecute
+          end
+          object lblScoreCPU: TLabel
+            Align = Client
+            StyledSettings = [Family]
+            Margins.Left = 5.000000000000000000
+            Size.Width = 94.000000000000000000
+            Size.Height = 40.000000000000000000
+            Size.PlatformDefault = False
+            TextSettings.Font.Size = 22.000000000000000000
+            TextSettings.Font.StyleExt = {00070000000000000004000000}
+            TextSettings.FontColor = claPlum
+          end
+        end
+      end
+      object Label9: TLabel
+        Align = Bottom
+        Cursor = crHandPoint
+        StyledSettings = [Family, Size, FontColor]
+        Margins.Right = 5.000000000000000000
+        Position.Y = 523.000000000000000000
+        Size.Width = 340.000000000000000000
+        Size.Height = 17.000000000000000000
+        Size.PlatformDefault = False
+        TextSettings.Font.StyleExt = {00040000000100000004000000}
+        TextSettings.HorzAlign = Trailing
+        Text = 'http://www.gbesoft.fr'
+        OnClick = Label9Click
+      end
+    end
+    object layOptions: TLayout
+      Opacity = 0.949999988079071100
+      Position.Y = 168.000000000000000000
+      Size.Width = 330.000000000000000000
+      Size.Height = 270.000000000000000000
+      Size.PlatformDefault = False
+      Visible = False
+      TabOrder = 1
+      object Rectangle1: TRectangle
+        Align = Client
+        Fill.Kind = Gradient
+        Fill.Gradient.Points = <
+          item
+            Color = claBlack
+            Offset = 0.000000000000000000
+          end
+          item
+            Color = xFFE88754
+            Offset = 1.000000000000000000
+          end>
+        Fill.Gradient.StartPosition.X = 0.500000000000000000
+        Fill.Gradient.StartPosition.Y = 1.000000000000000000
+        Fill.Gradient.StopPosition.X = 0.499999970197677600
+        Fill.Gradient.StopPosition.Y = 0.000000000000000000
+        Size.Width = 330.000000000000000000
+        Size.Height = 270.000000000000000000
+        Size.PlatformDefault = False
+        object Image3: TImage
+          MultiResBitmap.Height = 32
+          MultiResBitmap.Width = 32
+          MultiResBitmap.TransparentColor = 16777215
+          MultiResBitmap = <
+            item
+              Width = 32
+              Height = 32
+              PNG = {
+                89504E470D0A1A0A0000000D4948445200000020000000200806000000737A7A
+                F4000000017352474200AECE1CE90000000467414D410000B18F0BFC61050000
+                00B4494441545847ED93411280200845AD9378FF5379931A1C719C04054537F9
+                36B500DE17CB1D0E875F114278D26BE64ACFA55062EF7D742F0D408991A5015A
+                626459809E1CC5886900AD1CD812801223660128794B8CE4827280A4B164540E
+                C4A2990133BDC09D9E15D4E02F929A1E3929378C3B8DB69E236F402BA2D0CA81
+                AA417232AA66440E54DF406F90A51C601BA5AB9F9103EC5FB00BF5BA4B664F0F
+                34376021E8317C0556E14443BE57B1633387BFE0DC0BAFB55C7CAFFC54760000
+                000049454E44AE426082}
+              FileName = 
+                'C:\Users\Gregory\Documents\Developpement\Programmes\FMX\Pong\ok.' +
+                'bmp'
+            end>
+          Align = Client
+          Cursor = crHandPoint
+          Margins.Left = 60.000000000000000000
+          Margins.Top = 15.000000000000000000
+          Margins.Right = 60.000000000000000000
+          Margins.Bottom = 15.000000000000000000
+          Size.Width = 210.000000000000000000
+          Size.Height = 43.000000000000000000
+          Size.PlatformDefault = False
+          OnClick = Image3Click
+        end
+        object Layout1: TLayout
+          Align = Top
+          Position.Y = 97.000000000000000000
+          Size.Width = 330.000000000000000000
+          Size.Height = 50.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 1
+          object Label3: TLabel
+            Align = Left
+            StyledSettings = [Family, FontColor]
+            Margins.Left = 5.000000000000000000
+            Position.X = 5.000000000000000000
+            Size.Width = 68.000000000000000000
+            Size.Height = 50.000000000000000000
+            Size.PlatformDefault = False
+            TextSettings.Font.Size = 14.000000000000000000
+            TextSettings.Font.StyleExt = {00070000000000000004000000}
+            TextSettings.VertAlign = Leading
+            Text = 'Vitesse :'
+          end
+          object Label6: TLabel
+            Align = Left
+            Position.X = 73.000000000000000000
+            Size.Width = 40.000000000000000000
+            Size.Height = 50.000000000000000000
+            Size.PlatformDefault = False
+            Text = 'Lent'
+          end
+          object Label7: TLabel
+            Align = Right
+            Margins.Right = 5.000000000000000000
+            Position.X = 280.000000000000000000
+            Size.Width = 45.000000000000000000
+            Size.Height = 50.000000000000000000
+            Size.PlatformDefault = False
+            TextSettings.HorzAlign = Trailing
+            Text = 'Rapide'
+          end
+          object tbVitesse: TTrackBar
+            Align = Client
+            CanParentFocus = True
+            Max = 3.000000000000000000
+            Min = 1.000000000000000000
+            Orientation = Horizontal
+            Size.Width = 167.000000000000000000
+            Size.Height = 50.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 4
+            Value = 1.299999952316284000
+            OnTracking = tbVitesseTracking
+          end
+        end
+        object Label1: TLabel
+          Align = Top
+          StyledSettings = [Family, FontColor]
+          Size.Width = 330.000000000000000000
+          Size.Height = 50.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.Font.Size = 18.000000000000000000
+          TextSettings.Font.StyleExt = {04070000000000000004000000}
+          TextSettings.HorzAlign = Center
+          Text = 'Options'
+        end
+        object Layout2: TLayout
+          Align = Top
+          Position.Y = 50.000000000000000000
+          Size.Width = 330.000000000000000000
+          Size.Height = 47.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 3
+          object Label2: TLabel
+            Align = Left
+            StyledSettings = [Family, FontColor]
+            Margins.Left = 5.000000000000000000
+            Position.X = 5.000000000000000000
+            Size.Width = 68.000000000000000000
+            Size.Height = 47.000000000000000000
+            Size.PlatformDefault = False
+            TextSettings.Font.Size = 14.000000000000000000
+            TextSettings.Font.StyleExt = {00070000000000000004000000}
+            TextSettings.VertAlign = Leading
+            Text = 'Force IA :'
+          end
+          object tbForceIA: TTrackBar
+            Align = Client
+            CanParentFocus = True
+            Max = 1.000000000000000000
+            Min = 0.500000000000000000
+            Orientation = Horizontal
+            Margins.Right = 8.000000000000000000
+            Size.Width = 167.000000000000000000
+            Size.Height = 47.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 2
+            Value = 0.699999988079071100
+            OnTracking = tbVitesseTracking
+          end
+          object Label4: TLabel
+            Align = Left
+            Position.X = 73.000000000000000000
+            Size.Width = 40.000000000000000000
+            Size.Height = 47.000000000000000000
+            Size.PlatformDefault = False
+            Text = 'Faible'
+          end
+          object Label5: TLabel
+            Align = Right
+            Margins.Right = 5.000000000000000000
+            Position.X = 288.000000000000000000
+            Size.Width = 37.000000000000000000
+            Size.Height = 47.000000000000000000
+            Size.PlatformDefault = False
+            Text = 'Fort'
+          end
+        end
+        object Layout3: TLayout
+          Align = Top
+          Position.Y = 147.000000000000000000
+          Size.Width = 330.000000000000000000
+          Size.Height = 50.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 4
+          object Label8: TLabel
+            Align = Left
+            StyledSettings = [Family, FontColor]
+            Margins.Left = 5.000000000000000000
+            Position.X = 5.000000000000000000
+            Size.Width = 108.000000000000000000
+            Size.Height = 50.000000000000000000
+            Size.PlatformDefault = False
+            TextSettings.Font.Size = 14.000000000000000000
+            TextSettings.Font.StyleExt = {00070000000000000004000000}
+            TextSettings.VertAlign = Leading
+            Text = 'Anticr'#233'nelage :'
+          end
+          object cbMultisample: TComboBox
+            Align = Client
+            Items.Strings = (
+              'Aucun'
+              '2X'
+              '4X')
+            Margins.Left = 15.000000000000000000
+            Margins.Top = 10.000000000000000000
+            Margins.Right = 15.000000000000000000
+            Margins.Bottom = 10.000000000000000000
+            Size.Width = 187.000000000000000000
+            Size.Height = 30.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 1
+          end
+        end
+      end
+      object FloatAnimation1: TFloatAnimation
+        Duration = 0.500000000000000000
+        PropertyName = 'Position.Y'
+        StartValue = 300.000000000000000000
+        StopValue = 0.000000000000000000
+      end
+    end
   end
   object actListe: TActionList
     Left = 200
-    Top = 8
+    Top = 496
     object actJouer: TAction
       Text = 'Jouer'
       OnExecute = actJouerExecute
     end
-    object actAide: TAction
-      Text = 'Aide'
-      OnExecute = actAideExecute
+    object actOptions: TAction
+      Text = 'Options'
+      OnExecute = actOptionsExecute
     end
+  end
+  object LightPlum: TLightMaterialSource
+    Diffuse = claPlum
+    Ambient = xFF202020
+    Emissive = claNull
+    Specular = xFF606060
+    Shininess = 30
+    Left = 136
+    Top = 496
   end
 end

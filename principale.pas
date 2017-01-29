@@ -12,7 +12,7 @@ uses
   FMX.Controls.Presentation,
   FMX.StdCtrls,
   FMX.ScrollBox,
-  FMX.Memo;
+  FMX.Memo, FMX.Layouts, FMX.Objects, FMX.ListBox, System.IniFiles, System.IOUtils;
 
 type
   TfPrincipale = class(TForm)
@@ -34,18 +34,39 @@ type
     base: TCube;
     actListe: TActionList;
     actJouer: TAction;
-    pnlAction: TPanel;
-    btnJouer: TButton;
-    btnAide: TButton;
-    actAide: TAction;
-    memAide: TMemo;
     StyleBook: TStyleBook;
     palet: TCylinder;
     txtGagne: TText3D;
-    lblScore: TLabel;
-    tbDifficulte: TTrackBar;
     LimiteZone: TPlane;
     LightLimite: TLightMaterialSource;
+    layHaut: TLayout;
+    lblScoreJoueur: TLabel;
+    tbVitesse: TTrackBar;
+    RoundRect1: TRoundRect;
+    Image1: TImage;
+    Image2: TImage;
+    layOptions: TLayout;
+    Label1: TLabel;
+    Rectangle1: TRectangle;
+    actOptions: TAction;
+    FloatAnimation1: TFloatAnimation;
+    Image3: TImage;
+    Label2: TLabel;
+    Layout1: TLayout;
+    Layout2: TLayout;
+    Label3: TLabel;
+    tbForceIA: TTrackBar;
+    Label4: TLabel;
+    Label5: TLabel;
+    Label6: TLabel;
+    Label7: TLabel;
+    LightPlum: TLightMaterialSource;
+    Layout3: TLayout;
+    Label8: TLabel;
+    cbMultisample: TComboBox;
+    lblScoreCPU: TLabel;
+    Rectangle2: TRectangle;
+    Label9: TLabel;
     procedure raquetteJoueurMouseDown(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: Single; RayPos, RayDir: TVector3D);
     procedure raquetteJoueurMouseUp(Sender: TObject; Button: TMouseButton;
@@ -58,21 +79,20 @@ type
     procedure aniBouclePrincipaleFinish(Sender: TObject);
     procedure disparitionFinish(Sender: TObject);
     procedure raquetteJoueurRender(Sender: TObject; Context: TContext3D);
-    procedure actJouerExecute(
-      Sender: TObject);
-    procedure affichage3DClick(
-      Sender: TObject);
-    procedure bordDroitClick(
-      Sender: TObject);
-    procedure actAideExecute(
-      Sender: TObject);
-    procedure memAideClick(
-      Sender: TObject);
-    procedure tbDifficulteTracking(
-      Sender: TObject);
+    procedure actJouerExecute(Sender: TObject);
+    procedure affichage3DClick(Sender: TObject);
+    procedure bordDroitClick(Sender: TObject);
+    procedure memAideClick(Sender: TObject);
+    procedure tbVitesseTracking(Sender: TObject);
+    procedure actOptionsExecute(Sender: TObject);
+    procedure Image3Click(Sender: TObject);
+    procedure Label9Click(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     procedure initialiserPlateau;
-    procedure RetourMenu;  // Initialiser le jeu
+    procedure RetourMenu;
+    procedure ChargerConfig;
+    procedure SauverConfig;
     { Déclarations privées }
   public
     { Déclarations publiques }
@@ -81,6 +101,7 @@ type
     jeu, // Indique la phase du jeu à afficher
     scoreJoueur, scoreCPU : integer; // Permet de stocker les points du joueur et de l'ordi
     tempsReactionIA : single; // Délais de réaction avant de déplacer la raquette gérée par l'ordinateur
+    fichierConfig : string;
     procedure DeplacementPalet; // Déplacement du palet
     procedure Service; // mise en jeu
     procedure CPU;  // Intelligence artificielle
@@ -94,20 +115,81 @@ implementation
 {$R *.fmx}
 
 // Création de la form
+procedure TfPrincipale.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  SauverConfig;
+end;
+
 procedure TfPrincipale.FormCreate(Sender: TObject);
 begin
+  {$IF DEFINED(MSWINDOWS)}
+  fichierConfig := ExtractFilePath(ParamStr(0));
+  {$ELSE}
+  fichierConfig := System.IOUtils.TPath.GetDocumentsPath + System.SysUtils.PathDelim;
+  {$ENDIF}
+
+  layOptions.Visible := false;
+  layOptions.Position.y := fPrincipale.Height + 1;
   cubeBande.visible := false;
   dmyPalet.Visible := false;
   palet.Visible := false;
   initialiserPlateau;
   tempsReactionIA := 0.30;
   jeu := 1;
+
+  cbMultisample.ItemIndex := 0;
+
+  chargerConfig;
 end;
 
-// Affichage de l'aide
-procedure TfPrincipale.actAideExecute(Sender: TObject);
+// Chargement des options
+procedure TfPrincipale.ChargerConfig;
+var
+  IniFile: TMemIniFile;
+  multisample : string;
 begin
-  jeu := 5;
+  if fileexists(fichierConfig+ 'options.ini') then
+  begin
+    IniFile := TMemIniFile.Create(fichierConfig + 'options.ini');
+    tbForceIA.Value := IniFile.ReadFloat('OPTIONS', 'IA', 0.7);
+    tbVitesse.Value := IniFile.ReadFloat('OPTIONS', 'Vitesse', 1.3);
+    multisample := IniFile.ReadString('OPTIONS', 'Multisample', '4X');
+    if multisample = '4X' then cbMultisample.ItemIndex := 2;
+    if multisample = '2X' then cbMultisample.ItemIndex := 1;
+    if multisample = 'Aucun' then cbMultisample.ItemIndex := 0;
+
+    IniFile.UpdateFile;
+    IniFile.Free;
+  end;
+end;
+
+// Sauvegarde des options
+procedure TfPrincipale.SauverConfig;
+var
+  IniFile: TMemIniFile;
+begin
+  IniFile := TMemIniFile.Create(fichierConfig + 'options.ini');
+  IniFile.WriteFloat('OPTIONS', 'IA', tbForceIA.Value);
+  IniFile.WriteFloat('OPTIONS', 'Vitesse', tbVitesse.Value);
+  IniFile.WriteString('OPTIONS', 'Multisample', cbMultisample.Items[cbMultisample.ItemIndex]);
+  IniFile.UpdateFile;
+  IniFile.Free;
+end;
+
+procedure TfPrincipale.Image3Click(Sender: TObject);
+begin
+  layOptions.Position.x:= Round(fPrincipale.width / 2) - Round(layOptions.Width / 2);
+
+  FloatAnimation1.StartValue := Round(fPrincipale.Height / 2) - Round(layOptions.Height / 2);
+  FloatAnimation1.StopValue := fPrincipale.Height + 1;
+  FloatAnimation1.Start;
+
+  case cbMultisample.ItemIndex of
+    0: affichage3D.Multisample := TMultisample.None;
+    1: affichage3D.Multisample := TMultisample.TwoSamples;
+    2: affichage3D.Multisample := TMultisample.FourSamples;
+  end;
+
 end;
 
 // Démarre une partie
@@ -160,7 +242,7 @@ begin
       if H.X - S < -K.X then H.X := -K.X +S;
       if H.X + S > K.X then H.X := K.X -S;
       // Calcul de la durée de l'animation de déplacement de la raquette
-      duration:= tempsReactionIA + random * 0.25;
+      duration:= (tbForceIA.max - tbForceIA.value) + random * 0.25;
       // Paramétrage du début et de la fin de l'animation (qui est un déplacement sur l'axe X : c'est défini dans initialiserPlateau)
       StartValue := P.X;
       StopValue := H.X;
@@ -177,23 +259,24 @@ var
   const nbService: Integer = 2;
 begin
   // affichage du score
-  lblScore.text := Format(' %d : %d', [scoreCPU, scoreJoueur]);
+  lblScoreJoueur.text := Format('%d', [scoreJoueur]);
+  lblScoreCPU.text := Format('%d', [scoreCPU]);
   // chaque joueur sert deux fois de suite
   serviceAQui := 1 - (2 * (( (scoreJoueur+scoreCPU) div nbService) mod 2));
   // Positionnement du palet pour service
   dmyPalet.Position.DefaultValue:=Point3d(1,1,0) * serviceAQui;
   With base do
   begin
-    dmyPalet.Position.Point:= Point3d(width - 5, height -5 ,0) * -0.5 * serviceAQui;
+    dmyPalet.Position.Point:= Point3d(width-5, height -20 ,0) * -0.5 * serviceAQui;
   end;
   // Effet de fondu pour faire apparaitre le palet
   apparition.Start;
 end;
 
 // Modification du temp de réaction de l'ia
-procedure TfPrincipale.tbDifficulteTracking(Sender: TObject);
+procedure TfPrincipale.tbVitesseTracking(Sender: TObject);
 begin
-   tempsReactionIA := tbDifficulte.Value/10;
+   //tempsReactionIA := (tbVitesse.Max - tbVitesse.Value)/10;
 end;
 
 procedure TfPrincipale.bordDroitClick(Sender: TObject);
@@ -220,7 +303,6 @@ begin
        begin
          txtGagne.Visible := false;
          txtGagne.RotationAngle.x := 0;
-         memAide.Visible := false;
          palet.Visible := false;
          if dmyPrincipal.Scale.X < 0.5 then
          begin
@@ -234,7 +316,6 @@ begin
        end;
     2: // Jeu
        begin
-         memAide.Visible := false;
          txtGagne.Visible := false;
          txtGagne.RotationAngle.x := 0;
          dmyPrincipal.RotationAngle.Z := 0;
@@ -247,7 +328,6 @@ begin
        end;
     3: // Ordi gagne
        begin
-         memAide.Visible := false;
          palet.Visible := false;
          txtGagne.Visible := true;
          txtGagne.text := 'Perdu :(';
@@ -255,17 +335,10 @@ begin
        end;
     4: // Joueur gagne
        begin
-         memAide.Visible := false;
          palet.Visible := false;
          txtGagne.Visible := true;
          txtGagne.text := 'Gagné :)';
          txtGagne.RotationAngle.x := txtGagne.RotationAngle.x +3;
-       end;
-    5: // Affichage de l'aide
-       begin
-         txtGagne.RotationAngle.x := 0;
-         txtGagne.Visible := false;
-         memAide.Visible := true;
        end;
   end;
 end;
@@ -295,6 +368,7 @@ begin
     HitTest := false;
     AddObject(CPUAI);
     CPUAI.PropertyName:='Position.X';
+    MaterialSource := LightPlum;
   end;
 
   // Création de la limite de zone de l'IA (mais l'IA ne s'en sert pas, c'est juste pour délimiter graphiquement)
@@ -308,6 +382,10 @@ begin
   raquetteJoueur.AutoCapture := true;
 end;
 
+procedure TfPrincipale.Label9Click(Sender: TObject);
+begin
+end;
+
 // Clic sur le memo provoque le retour à l'intro
 procedure TfPrincipale.memAideClick(Sender: TObject);
 begin
@@ -317,10 +395,9 @@ end;
 // Déplacement du palet
 procedure TfPrincipale.DeplacementPalet;
 var P, D, M : TPoint3d;
-    w : single;
 begin
   // Calcul de la vitesse
-  vitesse := TPointF.Create(base.Width, base.Height).Length / (vitesseInitiale * tbDifficulte.Value);
+  vitesse := TPointF.Create(base.Width, base.Height).Length / (vitesseInitiale * (tbVitesse.Max - tbVitesse.Value));
   // Détection de collision du palet avec cubeBande
   P:=dmyPrincipal.AbsoluteToLocal3D(dmyPalet.AbsolutePosition);
   D:=dmyPalet.Position.DefaultValue.Normalize;
@@ -432,6 +509,15 @@ begin
     D:=D * Point3D(45,90,0);
     dmyPalet.Position.DefaultValue:=D;
   end;
+end;
+
+procedure TfPrincipale.actOptionsExecute(Sender: TObject);
+begin
+  layOptions.Position.x := Round(fPrincipale.width / 2) - Round(layOptions.Width / 2);
+  layOptions.Visible := true;
+  FloatAnimation1.StartValue := fPrincipale.Height + 1;
+  FloatAnimation1.StopValue := Round(fPrincipale.Height / 2) - Round(layOptions.Height / 2);
+  FloatAnimation1.Start;
 end;
 
 procedure TfPrincipale.affichage3DClick(Sender: TObject);
