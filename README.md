@@ -8,5 +8,6 @@ Note : On Windows, Firemonkey required DirectX 11 and the shader model 5. Some u
    fmx.types.GlobalUseDXSoftware := True;
 in the project file before the line Application.Initialize;
 
-
 Grégory Bersegeay : http://www.gbesoft.fr
+
+<img src="https://github.com/gbegreg/FMXPong/blob/master/capture.jpg">

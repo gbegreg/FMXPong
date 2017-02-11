@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2014/09/04 21:15:14.000.684,=C:\Users\Gregory\Documents\Embarcadero\Studio\Projets\Unit1.pas</Transaction>
+    <Transaction>2014/09/04 22:11:33.000.007,=C:\Users\Gregory\Documents\Embarcadero\Studio\Projets\Unit1.pas</Transaction>
+    <Transaction>2014/09/07 13:35:53.000.918,=C:\Users\Gregory\Documents\Embarcadero\Studio\Projets\Unit1.pas</Transaction>
+    <Transaction>2014/09/07 13:38:56.000.650,=C:\Users\Gregory\Documents\Embarcadero\Studio\Projets\Unit1.pas</Transaction>
+    <Transaction>2014/09/12 19:52:06.000.887,=C:\Users\Gregory\Documents\Embarcadero\Studio\Projets\Unit1.pas</Transaction>
+    <Transaction>2014/09/21 00:00:16.000.651,=C:\Users\Gregory\Documents\Embarcadero\Studio\Projets\Unit1.pas</Transaction>
+    <Transaction>2014/10/21 23:02:14.000.453,=C:\Users\Gregory\Documents\Embarcadero\Studio\Projets\Unit1.pas</Transaction>
+    <Transaction>2014/10/27 00:29:46.000.319,=C:\Users\Gregory\Documents\Embarcadero\Studio\Projets\Unit1.pas</Transaction>
+    <Transaction>2015/03/06 11:43:51.000.258,=C:\Users\Gregory\Documents\Embarcadero\Studio\Projets\Unit1.pas</Transaction>
+    <Transaction>2015/06/10 14:20:25.000.996,=C:\Users\Gregory\Documents\Embarcadero\Studio\Projets\Unit1.pas</Transaction>
+    <Transaction>2015/11/15 22:44:13.000.119,=C:\Users\Gregory\Documents\Embarcadero\Studio\Projets\Unit1.pas</Transaction>
+    <Transaction>2015/12/06 19:41:33.000.840,=C:\Users\Gregory\Documents\Embarcadero\Studio\Projets\Unit1.pas</Transaction>
+    <Transaction>2015/12/06 19:42:08.000.947,C:\Users\Gregory\Documents\Developpement\Programmes\3D-Pingpong\Unit1.pas=C:\Users\Gregory\Documents\Embarcadero\Studio\Projets\Unit1.pas</Transaction>
+    <Transaction>2015/12/06 19:42:08.000.947,C:\Users\Gregory\Documents\Developpement\Programmes\3D-Pingpong\Unit1.fmx=C:\Users\Gregory\Documents\Embarcadero\Studio\Projets\Unit1.fmx</Transaction>
+    <Transaction>2015/12/06 19:42:29.000.641,C:\Users\Gregory\Documents\Developpement\Programmes\3D-Pingpong\pingpong.dproj=C:\Users\Gregory\Documents\Embarcadero\Studio\Projets\Project1.dproj</Transaction>
+    <Transaction>2016/01/03 18:38:45.000.426,C:\Users\Gregory\Documents\Developpement\Programmes\3D-Pingpong\GBEPing.dproj=C:\Users\Gregory\Documents\Developpement\Programmes\3D-Pingpong\pingpong.dproj</Transaction>
+    <Transaction>2016/01/03 19:44:09.000.670,=C:\Users\Gregory\Documents\Developpement\Programmes\3D-Pingpong\fOpen.pas</Transaction>
+    <Transaction>2016/01/03 21:15:49.000.546,C:\Users\Gregory\Documents\Developpement\Programmes\3D-Pingpong\fOpen.pas=</Transaction>
+    <Transaction>2016/01/11 21:10:58.000.221,C:\Users\Gregory\Documents\Developpement\Programmes\3D-Pingpong\FMXPong.dproj=C:\Users\Gregory\Documents\Developpement\Programmes\3D-Pingpong\GBEPing.dproj</Transaction>
+    <Transaction>2016/01/11 22:01:36.000.169,C:\Users\Gregory\Documents\Developpement\Programmes\3D-Pingpong\principale.fmx=C:\Users\Gregory\Documents\Developpement\Programmes\3D-Pingpong\Unit1.fmx</Transaction>
+    <Transaction>2016/01/11 22:01:36.000.169,C:\Users\Gregory\Documents\Developpement\Programmes\3D-Pingpong\principale.pas=C:\Users\Gregory\Documents\Developpement\Programmes\3D-Pingpong\Unit1.pas</Transaction>
+  </Transactions>
+	<ActiveMobileDevice>
+		<NoProfile Android="e0df967e"/>
+	</ActiveMobileDevice>
+</BorlandProject>
