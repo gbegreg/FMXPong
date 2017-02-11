@@ -11,3 +11,8 @@ in the project file before the line Application.Initialize;
 Grégory Bersegeay : http://www.gbesoft.fr
 
 <img src="https://github.com/gbegreg/FMXPong/blob/master/capture.jpg">
+
+
+History :
+11/02/2017 : Add a new feature : control the racket with the gyroscope
+21/01/2017 : New interface, options menu and save/restore parameters
