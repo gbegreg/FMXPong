@@ -4,7 +4,7 @@ This is an example of using Firemonkey in 3D with Delphi. This project is a clon
 
 The project was made with Delphi Seattle Pro with mobile plugin and it works with Delphi Berlin. You can compile and deploy it on Windows, Mac OS, Android and IOS.
 
-Note : On Windows, Firemonkey required DirectX 11 and the shader model 5. Some users have encountred graphic rendering issues on old Intel HD Graphics GPU. If you have this problem, you can force the software rendering by adding the line 
+<b>Note :</b> On Windows, Firemonkey required DirectX 11 and the shader model 5. Some users have encountred graphic rendering issues on old Intel HD Graphics GPU. If you have this problem, you can force the software rendering by adding the line 
    fmx.types.GlobalUseDXSoftware := True;
 in the project file before the line Application.Initialize;
 
@@ -13,6 +13,6 @@ Grégory Bersegeay : http://www.gbesoft.fr
 <img src="https://github.com/gbegreg/FMXPong/blob/master/capture.jpg">
 
 
-History :
-11/02/2017 : Add a new feature : control the racket with the gyroscope
-21/01/2017 : New interface, options menu and save/restore parameters
+<u>History :</u><br>
+11/02/2017 : Add a new feature : control the racket with the gyroscope<br>
+21/01/2017 : New interface, options menu and save/restore parameters<br>
