@@ -13,7 +13,10 @@ The Windows 32 bits version is available : <a href="http://www.gbesoft.fr/test/F
 
 See my other games with Delphi and Firmaonkey :<br>
 https://github.com/gbegreg/FMXCorridor<br>
-https://github.com/gbegreg/demoParis
+https://github.com/gbegreg/demoParis<br>
+
+A small open 3D world :
+https://github.com/gbegreg/FMXISland
 
 Grégory Bersegeay : http://www.gbesoft.fr
 
