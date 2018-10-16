@@ -11,7 +11,7 @@ in the project file before the line Application.Initialize;
 You can download the Android version on the <a href="https://play.google.com/store/apps/details?id=fr.gbesoft.FMXPong">Google Play Store</a>.
 The Windows 32 bits version is available : <a href="http://www.gbesoft.fr/test/FMXPong.zip">http://www.gbesoft.fr/test/FMXPong.zip</a> and the 64 bits version : <a href="http://www.gbesoft.fr/test/FMXPong64.zip">http://www.gbesoft.fr/test/FMXPong64.zip</a>
 
-See my other games with Delphi and Firmaonkey :<br>
+See my other games with Delphi and Firmonkey :<br>
 https://github.com/gbegreg/FMXCorridor<br>
 https://github.com/gbegreg/demoParis<br>
 
