@@ -1,4 +1,10 @@
 # FMXPong
+[![License](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
+![Top language](https://img.shields.io/github/languages/top/gbegreg/FMXPong)
+[![](https://tokei.rs/b1/github/gbegreg/MapReduce?category=code)](https://github.com//gbegreg/FMXPong)
+[![](https://tokei.rs/b1/github/gbegreg/MapReduce?category=files)](https://github.com//gbegreg/FMXPong)
+![GitHub last commit](https://img.shields.io/github/last-commit/gbegreg/FMXPong)
+
 Pong 3D with Delphi and Firemonkey (Windows, Mac OS, Android, IOS)
 This is an example of using Firemonkey in 3D with Delphi. This project is a clone of the video game Pong. It is a tutorial made for the site (in French) http://gbegreg.developpez.com/tutoriels/delphi/firemonkey/creation-jeu-3d/
 
